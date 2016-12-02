@@ -1,0 +1,7 @@
+language: objective-c
+osx_image: xcode7.3
+xcode_project: MusicXML.xcodeproj
+xcode_scheme: MusicXMLMac
+xcode_sdk: macosx10.9
+before_script:
+	- carthage bootstrap
