@@ -1,2 +1,2 @@
 # MusicXML
-MusicXML Converter
+Converter for [MusicXML](https://www.musicxml.com/).
