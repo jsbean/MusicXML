@@ -1,7 +1,21 @@
 language: objective-c
-osx_image: xcode7.3
-xcode_project: MusicXML.xcodeproj
-xcode_scheme: MusicXMLMac
-xcode_sdk: macosx10.9
-before_script:
-	- carthage bootstrap
+osx_image: xcode8
+env:
+  matrix:
+    - DESTINATION="platform=iOS Simulator,OS=9.3,name=iPad 2" 
+      SCHEME="MusicXML"
+    - DESTINATION="platform=iOS Simulator,OS=10.0,name=iPad Pro (12.9 inch)"
+      SCHEME="MusicXML"
+    - DESTINATION="platform=OS X" 
+      SCHEME="MusicXMLMac"
+
+before_script: carthage update
+
+script: travis_retry xcodebuild test 
+  -project MusicXML.xcodeproj
+  -scheme "${SCHEME}"
+  -destination "${DESTINATION}"
+  TOOLCHAINS=swift
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
