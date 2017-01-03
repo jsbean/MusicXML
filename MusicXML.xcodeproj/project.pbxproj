@@ -59,9 +59,9 @@
 
 /* Begin PBXFileReference section */
 		210770FC9E5EA00668B119E4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		855D2C27218F0D185E61D518 /* MusicXMLMacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicXMLMacTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		855D2C27218F0D185E61D518 /* MusicXML macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MusicXML macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8976F67094943E77111F7F14 /* MusicXML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicXML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BEC45106B4B101C159483FB /* MusicXMLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicXMLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BEC45106B4B101C159483FB /* MusicXML iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MusicXML iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C6B9FD1863B9C4DB581A013 /* MusicXML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MusicXML.h; path = MusicXML/MusicXML.h; sourceTree = "<group>"; };
 		984B6DCAA1EC6A1D5E88C888 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = MusicXML/Info.plist; sourceTree = "<group>"; };
 		AB923FCC5E3160373DE9415A /* MusicXML.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; path = MusicXML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,9 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				B8FF38648AC3F8BD841107CF /* MusicXML.framework */,
-				8BEC45106B4B101C159483FB /* MusicXMLTests.xctest */,
+				8BEC45106B4B101C159483FB /* MusicXML iOS Tests.xctest */,
 				8976F67094943E77111F7F14 /* MusicXML.framework */,
-				855D2C27218F0D185E61D518 /* MusicXMLMacTests.xctest */,
+				855D2C27218F0D185E61D518 /* MusicXML macOS Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -208,9 +208,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		088A75F421D10529CF15FA6E /* MusicXMLMacTests */ = {
+		088A75F421D10529CF15FA6E /* MusicXML macOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 19E0C7AF760AC101697FE43D /* Build configuration list for PBXNativeTarget "MusicXMLMacTests" */;
+			buildConfigurationList = 19E0C7AF760AC101697FE43D /* Build configuration list for PBXNativeTarget "MusicXML macOS Tests" */;
 			buildPhases = (
 				E027530423C516C9F39AA877 /* Sources */,
 				91B3C5A4CD8530662958301F /* Frameworks */,
@@ -221,14 +221,14 @@
 			dependencies = (
 				9252CA089E8573F4DFF8C7F5 /* PBXTargetDependency */,
 			);
-			name = MusicXMLMacTests;
+			name = "MusicXML macOS Tests";
 			productName = MusicXMLMacTests;
-			productReference = 855D2C27218F0D185E61D518 /* MusicXMLMacTests.xctest */;
+			productReference = 855D2C27218F0D185E61D518 /* MusicXML macOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		748133E38323DEBBFC4B4F8A /* MusicXML */ = {
+		748133E38323DEBBFC4B4F8A /* MusicXML iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 81CF1FBC649DA09144A85C22 /* Build configuration list for PBXNativeTarget "MusicXML" */;
+			buildConfigurationList = 81CF1FBC649DA09144A85C22 /* Build configuration list for PBXNativeTarget "MusicXML iOS" */;
 			buildPhases = (
 				B95CCA46BB31A5BE06934DE4 /* Sources */,
 				598B286BB6649E83595A4296 /* Frameworks */,
@@ -238,14 +238,14 @@
 			);
 			dependencies = (
 			);
-			name = MusicXML;
+			name = "MusicXML iOS";
 			productName = MusicXML;
 			productReference = B8FF38648AC3F8BD841107CF /* MusicXML.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7CD139B6F0DEA17CAB88D15F /* MusicXMLTests */ = {
+		7CD139B6F0DEA17CAB88D15F /* MusicXML iOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 05ADDE8F5FD3EBB368EB7FBB /* Build configuration list for PBXNativeTarget "MusicXMLTests" */;
+			buildConfigurationList = 05ADDE8F5FD3EBB368EB7FBB /* Build configuration list for PBXNativeTarget "MusicXML iOS Tests" */;
 			buildPhases = (
 				3C243BB24D92010DAFC35656 /* Sources */,
 				E690C7724000042DD573F209 /* Frameworks */,
@@ -256,14 +256,14 @@
 			dependencies = (
 				BEF3F2FC9AB089B9CE91D9D5 /* PBXTargetDependency */,
 			);
-			name = MusicXMLTests;
+			name = "MusicXML iOS Tests";
 			productName = MusicXMLTests;
-			productReference = 8BEC45106B4B101C159483FB /* MusicXMLTests.xctest */;
+			productReference = 8BEC45106B4B101C159483FB /* MusicXML iOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		977DF5ED5B29222138A42B44 /* MusicXMLMac */ = {
+		977DF5ED5B29222138A42B44 /* MusicXML macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2B9990BADD8958285AC83527 /* Build configuration list for PBXNativeTarget "MusicXMLMac" */;
+			buildConfigurationList = 2B9990BADD8958285AC83527 /* Build configuration list for PBXNativeTarget "MusicXML macOS" */;
 			buildPhases = (
 				0CC9F343EAAA1E6D1B165439 /* Sources */,
 				78C4D0586B921AEC683D11E9 /* Frameworks */,
@@ -273,7 +273,7 @@
 			);
 			dependencies = (
 			);
-			name = MusicXMLMac;
+			name = "MusicXML macOS";
 			productName = MusicXMLMac;
 			productReference = 8976F67094943E77111F7F14 /* MusicXML.framework */;
 			productType = "com.apple.product-type.framework";
@@ -299,10 +299,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				748133E38323DEBBFC4B4F8A /* MusicXML */,
-				7CD139B6F0DEA17CAB88D15F /* MusicXMLTests */,
-				977DF5ED5B29222138A42B44 /* MusicXMLMac */,
-				088A75F421D10529CF15FA6E /* MusicXMLMacTests */,
+				748133E38323DEBBFC4B4F8A /* MusicXML iOS */,
+				7CD139B6F0DEA17CAB88D15F /* MusicXML iOS Tests */,
+				977DF5ED5B29222138A42B44 /* MusicXML macOS */,
+				088A75F421D10529CF15FA6E /* MusicXML macOS Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -342,13 +342,13 @@
 		9252CA089E8573F4DFF8C7F5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MusicXMLMac;
-			target = 977DF5ED5B29222138A42B44 /* MusicXMLMac */;
+			target = 977DF5ED5B29222138A42B44 /* MusicXML macOS */;
 			targetProxy = 6B80DBC79CBCF761C50ADF71 /* PBXContainerItemProxy */;
 		};
 		BEF3F2FC9AB089B9CE91D9D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MusicXML;
-			target = 748133E38323DEBBFC4B4F8A /* MusicXML */;
+			target = 748133E38323DEBBFC4B4F8A /* MusicXML iOS */;
 			targetProxy = D9E0B9DA9738CED7C703A294 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -603,7 +603,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		05ADDE8F5FD3EBB368EB7FBB /* Build configuration list for PBXNativeTarget "MusicXMLTests" */ = {
+		05ADDE8F5FD3EBB368EB7FBB /* Build configuration list for PBXNativeTarget "MusicXML iOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B15E0A79132E7258FF7C51BE /* Release */,
@@ -612,7 +612,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19E0C7AF760AC101697FE43D /* Build configuration list for PBXNativeTarget "MusicXMLMacTests" */ = {
+		19E0C7AF760AC101697FE43D /* Build configuration list for PBXNativeTarget "MusicXML macOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3749BAB6C47919836277BE63 /* Release */,
@@ -621,7 +621,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2B9990BADD8958285AC83527 /* Build configuration list for PBXNativeTarget "MusicXMLMac" */ = {
+		2B9990BADD8958285AC83527 /* Build configuration list for PBXNativeTarget "MusicXML macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6D2848D0D784923F36F9769F /* Release */,
@@ -639,7 +639,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		81CF1FBC649DA09144A85C22 /* Build configuration list for PBXNativeTarget "MusicXML" */ = {
+		81CF1FBC649DA09144A85C22 /* Build configuration list for PBXNativeTarget "MusicXML iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0C5B5B10BCCB9CFAF12D679E /* Release */,

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "977DF5ED5B29222138A42B44"
+               BlueprintIdentifier = "748133E38323DEBBFC4B4F8A"
                BuildableName = "MusicXML.framework"
-               BlueprintName = "MusicXMLMac"
+               BlueprintName = "MusicXML iOS"
                ReferencedContainer = "container:MusicXML.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "088A75F421D10529CF15FA6E"
-               BuildableName = "MusicXMLMacTests.xctest"
-               BlueprintName = "MusicXMLMacTests"
+               BlueprintIdentifier = "7CD139B6F0DEA17CAB88D15F"
+               BuildableName = "MusicXML iOS Tests.xctest"
+               BlueprintName = "MusicXML iOS Tests"
                ReferencedContainer = "container:MusicXML.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "088A75F421D10529CF15FA6E"
-               BuildableName = "MusicXMLMacTests.xctest"
-               BlueprintName = "MusicXMLMacTests"
+               BlueprintIdentifier = "7CD139B6F0DEA17CAB88D15F"
+               BuildableName = "MusicXML iOS Tests.xctest"
+               BlueprintName = "MusicXML iOS Tests"
                ReferencedContainer = "container:MusicXML.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -70,9 +70,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "977DF5ED5B29222138A42B44"
+            BlueprintIdentifier = "748133E38323DEBBFC4B4F8A"
             BuildableName = "MusicXML.framework"
-            BlueprintName = "MusicXMLMac"
+            BlueprintName = "MusicXML iOS"
             ReferencedContainer = "container:MusicXML.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
