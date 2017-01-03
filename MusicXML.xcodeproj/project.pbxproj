@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		073F6BB21E1C01270098AA8E /* mxl2dnm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F6BB11E1C01270098AA8E /* mxl2dnm.swift */; };
 		073F6BB31E1C01270098AA8E /* mxl2dnm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F6BB11E1C01270098AA8E /* mxl2dnm.swift */; };
-		073F6BB81E1C03130098AA8E /* mxl2dnmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F6BB71E1C03130098AA8E /* mxl2dnmTests.swift */; };
-		073F6BB91E1C03130098AA8E /* mxl2dnmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F6BB71E1C03130098AA8E /* mxl2dnmTests.swift */; };
 		073F6BCA1E1C07230098AA8E /* Dichterliebe01.xml in Resources */ = {isa = PBXBuildFile; fileRef = 073F6BAF1E1C00510098AA8E /* Dichterliebe01.xml */; };
 		073F6BCB1E1C07230098AA8E /* Chant.xml in Resources */ = {isa = PBXBuildFile; fileRef = 073F6BB01E1C00510098AA8E /* Chant.xml */; };
 		073F6BCD1E1C072C0098AA8E /* Dichterliebe01.xml in Resources */ = {isa = PBXBuildFile; fileRef = 073F6BAF1E1C00510098AA8E /* Dichterliebe01.xml */; };
 		073F6BCE1E1C072C0098AA8E /* Chant.xml in Resources */ = {isa = PBXBuildFile; fileRef = 073F6BB01E1C00510098AA8E /* Chant.xml */; };
+		073F6BD01E1C1A570098AA8E /* mxl2dnmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F6BCF1E1C1A570098AA8E /* mxl2dnmTests.swift */; };
+		073F6BD11E1C1A570098AA8E /* mxl2dnmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F6BCF1E1C1A570098AA8E /* mxl2dnmTests.swift */; };
 		08F1483F64C26F86C9710AA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D552A0E95F3BFD891DD82166 /* Foundation.framework */; };
 		0C84A4B7DAC6504678FFD639 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210770FC9E5EA00668B119E4 /* Cocoa.framework */; };
 		5176862BB2A388ED07B3F2AA /* MusicXML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB923FCC5E3160373DE9415A /* MusicXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -69,7 +69,7 @@
 		073F6BAF1E1C00510098AA8E /* Dichterliebe01.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Dichterliebe01.xml; sourceTree = "<group>"; };
 		073F6BB01E1C00510098AA8E /* Chant.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Chant.xml; sourceTree = "<group>"; };
 		073F6BB11E1C01270098AA8E /* mxl2dnm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mxl2dnm.swift; path = MusicXML/mxl2dnm.swift; sourceTree = "<group>"; };
-		073F6BB71E1C03130098AA8E /* mxl2dnmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mxl2dnmTests.swift; path = MusicXML/mxl2dnmTests.swift; sourceTree = "<group>"; };
+		073F6BCF1E1C1A570098AA8E /* mxl2dnmTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mxl2dnmTests.swift; path = MusicXMLTests/mxl2dnmTests.swift; sourceTree = "<group>"; };
 		210770FC9E5EA00668B119E4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		855D2C27218F0D185E61D518 /* MusicXML macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MusicXML macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8976F67094943E77111F7F14 /* MusicXML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicXML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,8 +139,8 @@
 		1910317235497B792FEFA680 /* MusicXMLTests */ = {
 			isa = PBXGroup;
 			children = (
+				073F6BCF1E1C1A570098AA8E /* mxl2dnmTests.swift */,
 				D9E269CD1D5CF2D1DD9D7AB7 /* Supporting Files */,
-				073F6BB71E1C03130098AA8E /* mxl2dnmTests.swift */,
 			);
 			name = MusicXMLTests;
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				073F6BB81E1C03130098AA8E /* mxl2dnmTests.swift in Sources */,
+				073F6BD01E1C1A570098AA8E /* mxl2dnmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,7 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				073F6BB91E1C03130098AA8E /* mxl2dnmTests.swift in Sources */,
+				073F6BD11E1C1A570098AA8E /* mxl2dnmTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

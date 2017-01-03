@@ -17,13 +17,21 @@ struct SpelledPitch {
     let octave: Int
 }
 
+enum RestOrEvent <T> {
+    case rest
+    case event(T)
+}
+
 struct Note {
-    let pitches: [SpelledPitch]
+    
+    // In `divisions`, for now...
+    let duration: Int
+    let restOrEvent: RestOrEvent<[SpelledPitch]>
 }
 
 public class MusicXML {
     
-    // FIXME: Make rich
+    // FIXME: Make meaningful
     enum Error: Swift.Error {
         case invalid
     }
@@ -83,19 +91,21 @@ public class MusicXML {
                     divisions = d
                 }
                 
-                for note in measure["note"].all {
-                    
-                    // FIXME: Manage `duration` (take into account `division` above)
-                    
-                    // FIXME: Manage `rest`
-                    guard note["rest"].element == nil else {
-                        continue
-                    }
-                    
-                    // FIXME: Manage `note`
-                    let chord = spelledPitches(from: note)
+                for noteXML in measure["note"].all {
+                    let n = note(from: noteXML)
+                    print(n)
                 }
             }
+        }
+    }
+
+    // FIXME: Manage `duration` (take into account `division` above)
+    func note(from xml: XMLIndexer) -> Note? {
+        switch xml["rest"].element {
+        case nil:
+            return Note(duration: 1, restOrEvent: .rest)
+        default:
+            return Note(duration: 1, restOrEvent: .event(spelledPitches(from: xml)))
         }
     }
 
