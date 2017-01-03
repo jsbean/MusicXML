@@ -2,16 +2,16 @@ language: objective-c
 osx_image: xcode8
 env:
   matrix:
-    - DESTINATION="platform=iOS Simulator,OS=9.3,name=iPad 2" 
-      SCHEME="MusicXML"
+    - DESTINATION="platform=iOS Simulator,OS=9.3,name=iPad 2"
+      SCHEME="MusicXML iOS"
     - DESTINATION="platform=iOS Simulator,OS=10.0,name=iPad Pro (12.9 inch)"
-      SCHEME="MusicXML"
-    - DESTINATION="platform=OS X" 
-      SCHEME="MusicXMLMac"
+      SCHEME="MusicXML iOS"
+    - DESTINATION="platform=OS X"
+      SCHEME="MusicXML macOS"
 
-before_script: carthage update
+before_script: if [ -f ./Cartfile ]; then carthage update; fi;
 
-script: travis_retry xcodebuild test 
+script: travis_retry xcodebuild test
   -project MusicXML.xcodeproj
   -scheme "${SCHEME}"
   -destination "${DESTINATION}"
