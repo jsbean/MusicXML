@@ -22,12 +22,18 @@ enum RestOrEvent <T> {
     case event(T)
 }
 
+struct Duration {
+    let beats: Int
+    let subdivision: Int
+}
+
 struct Note {
-    
     // In `divisions`, for now...
-    let duration: Int
+    let duration: Duration
     let restOrEvent: RestOrEvent<[SpelledPitch]>
 }
+
+typealias Divisions = Int
 
 public class MusicXML {
     
@@ -66,8 +72,11 @@ public class MusicXML {
         
         for part in score["part"].all {
             
-            // FIXME: Implement this
-            let partID = part.element?.attribute(by: "id")?.text
+            guard let identifier = part.element?.attribute(by: "id")?.text else {
+                throw Error.invalid
+            }
+            
+            print("====================== \(identifier) =======================")
             
             // FIXME: This will generally be set on the first measure
             // - But may change throughout a work
@@ -92,7 +101,13 @@ public class MusicXML {
                 }
                 
                 for noteXML in measure["note"].all {
-                    let n = note(from: noteXML)
+                    
+                    guard let n = note(from: noteXML, divisions: divisions) else {
+                        continue
+                    }
+                    
+                    // Manage changing `divisions` as necessary
+                    tick += n.duration.beats
                     print(n)
                 }
             }
@@ -100,17 +115,34 @@ public class MusicXML {
     }
 
     // FIXME: Manage `duration` (take into account `division` above)
-    func note(from xml: XMLIndexer) -> Note? {
+    func note(from xml: XMLIndexer, divisions: Int) -> Note? {
+        
+        guard let dur = duration(from: xml, divisions: divisions) else {
+            return nil
+        }
+        
         switch xml["rest"].element {
         case nil:
-            return Note(duration: 1, restOrEvent: .rest)
+            return Note(duration: dur, restOrEvent: .event(spelledPitches(from: xml)))
         default:
-            return Note(duration: 1, restOrEvent: .event(spelledPitches(from: xml)))
+            return Note(duration: dur, restOrEvent: .rest)
         }
+    }
+    
+    func duration(from note: XMLIndexer, divisions: Int) -> Duration? {
+        
+        guard
+            let beatsString = note["duration"].element?.text,
+            let beats = Int(beatsString)
+        else {
+            return nil
+        }
+        
+        return Duration(beats: beats, subdivision: divisions)
     }
 
     func spelledPitches(from note: XMLIndexer) -> [SpelledPitch] {
-        
+
         return note["pitch"].all.flatMap { pitch in
             
             guard
