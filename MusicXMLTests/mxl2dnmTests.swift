@@ -11,13 +11,14 @@ import XCTest
 
 class mxl2dnmTests: XCTestCase {
 
-    func testMusicXMLParseScorePartwise() {
-        _ = MusicXMLToAbstractMusicalModelConverter(name: "Dichterliebe01")
-    }
-    
-    func DISABLED_testMusicXMLParserPerformance() {
-        self.measure {
-            _ = MusicXMLToAbstractMusicalModelConverter(name: "Dichterliebe01")
-        }
-    }
+//    func testMusicXMLParseScorePartwise() {
+//        _ = MusicXMLToAbstractMusicalModelConverter(name: "Dichterliebe01")
+//    }
+//    
+//    func DISABLED_testMusicXMLParserPerformance() {
+//        self.measure {
+//            _ = MusicXMLToAbstractMusicalModelConverter(name: "Dichterliebe01")
+//        }
+//    }
+//    
 }

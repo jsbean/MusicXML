@@ -236,10 +236,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19E0C7AF760AC101697FE43D /* Build configuration list for PBXNativeTarget "MusicXML macOS Tests" */;
 			buildPhases = (
+				8F6F23640830DC47BC917077 /* ShellScript */,
 				E027530423C516C9F39AA877 /* Sources */,
 				91B3C5A4CD8530662958301F /* Frameworks */,
 				8B9454E09A25A35200F479DC /* CopyFiles */,
-				8F6F23640830DC47BC917077 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -273,10 +273,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05ADDE8F5FD3EBB368EB7FBB /* Build configuration list for PBXNativeTarget "MusicXML iOS Tests" */;
 			buildPhases = (
+				015F6792717F3930CD52BCDC /* ShellScript */,
 				3C243BB24D92010DAFC35656 /* Sources */,
 				E690C7724000042DD573F209 /* Frameworks */,
 				C2708C916EAD755BF8A215F0 /* CopyFiles */,
-				015F6792717F3930CD52BCDC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -486,7 +486,7 @@
 				INFOPLIST_FILE = MusicXML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(SRCROOT)/Carthage/Build/iOS";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dn-m.MusicXML";
 				PRODUCT_NAME = MusicXML;
@@ -547,7 +547,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXMLTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
+				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac $(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -575,7 +575,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
+				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac $(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dn-m.MusicXML";
@@ -607,7 +607,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
+				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac $(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dn-m.MusicXML";
@@ -632,7 +632,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXMLTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS $(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -659,7 +659,7 @@
 				INFOPLIST_FILE = MusicXML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(SRCROOT)/Carthage/Build/iOS";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dn-m.MusicXML";
 				PRODUCT_NAME = MusicXML;
@@ -684,7 +684,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXMLTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS $(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -745,7 +745,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXMLTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
+				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac $(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
