@@ -10,7 +10,23 @@ import QuartzCore
 import SWXMLHash
 import AbstractMusicalModel
 
-// TODO: Tick (`implicit`, `forward`, `backup`)
+private struct SpelledPitch: CustomStringConvertible {
+    
+    var description: String {
+        return "\(step) \(alter) \(octave)"
+    }
+    
+    let step: String
+    let alter: Int
+    let octave: Int
+
+    init(step: String, octave: Int, alter: Int = 0) {
+        self.step = step
+        self.octave = octave
+        self.alter = alter
+    }
+}
+
 
 internal class MusicXMLToAbstractMusicalModelConverter {
     
@@ -25,25 +41,21 @@ internal class MusicXMLToAbstractMusicalModelConverter {
         case timewise
     }
     
-    private var divisionsByPartIdentifier: [String: Int] = [:]
+    private var divisionsByPart: [String: Int] = [:]
+    
+    /// Current duration in divisions
+    /// - TODO: Make conversion to beats, given divisionsByPartIdentifier value
+    private var tick: Int = 0
     
     internal init() {
         
-        let start = CACurrentMediaTime()
-        
         do {
-            let xml = try modelXML(name: "Dichterliebe01")
+            let xml = try scoreXML(name: "Dichterliebe01")
             let (score, format) = try scoreAndFormat(xml)
             try traverse(score, format)
         } catch {
-            //print(error)
+            print(error)
         }
-        
-        let end = CACurrentMediaTime()
-        let total = end - start
-        
-        print("time taken: \(total)")
-        
     }
     
     private func scoreAndFormat(_ score: XMLIndexer) throws -> (XMLIndexer, Format) {
@@ -68,7 +80,6 @@ internal class MusicXMLToAbstractMusicalModelConverter {
     
     private func traversePartwise(_ score: XMLIndexer) throws {
         try score["part"].all.forEach(traversePart)
-        print(divisionsByPartIdentifier)
     }
     
     private func traversePart(_ part: XMLIndexer) throws {
@@ -79,70 +90,113 @@ internal class MusicXMLToAbstractMusicalModelConverter {
         
         try storeDivisions(part: part, identifier: performerIdentifier)
         
-        try part["measure"].all.forEach {
-            try traverseMeasure($0, identifier: performerIdentifier)
+        try part["measure"].all.forEach { measure in
+            try traverseMeasure(measure, identifier: performerIdentifier)
         }
     }
 
     private func traverseMeasure(_ measure: XMLIndexer, identifier: String) throws {
         
-        try measure["note"].all.forEach {
-            try traverseNote($0, identifier: identifier)
+        for child in measure.children {
+            
+            guard let elementName = child.element?.name else {
+                continue
+            }
+            
+            // TODO: wrap up: dispatchMeasureItem
+            // TODO: case "divisions":
+            switch elementName {
+            case "backup":
+                print("backup")
+            case "forward":
+                print("backup")
+            case "note":
+                try traverseNote(child, identifier: identifier)
+            default:
+                break
+            }
         }
     }
     
+    private func adjustTick(_ forward: XMLIndexer) throws {
+
+    }
+    
     private func traverseNote(_ note: XMLIndexer, identifier: String) throws {
+
+        let rest = isRest(note)
         
+        // first check if rest, otherwise, check for pitches
+        let pitches = try note["pitch"].all.map(pitch)
+        
+        let dur = try duration(note)
+        print("duration: \(dur)")
+        print("tick: \(tick)")
+        print("divisions: \(divisionsByPart[identifier])")
+        tick += dur
+    
         // check if rest
         // otherwise, pitch
-        // duration
         // voice
         // staff ?
         // tie (start / stop)
     }
     
+    private func isRest(_ note: XMLIndexer) -> Bool {
+        return note["rest"].element != nil
+    }
+    
+    private func duration(_ note: XMLIndexer) throws -> Int {
+        
+        guard
+            let durationString = note["duration"].element?.text,
+            let duration = Int(durationString)
+        else {
+            throw Error.illFormedScore
+        }
+        
+        return duration
+    }
+    
+    private func pitch(_ pitch: XMLIndexer) throws -> SpelledPitch {
+        
+        guard
+            let step = pitch["step"].element?.text,
+            let octave = pitch["octave"].element?.text
+        else {
+            throw Error.illFormedScore
+        }
+        
+        let alter = pitch["alter"].element?.text ?? "0"
+        
+        return SpelledPitch(step: step, octave: Int(octave)!, alter: Int(alter)!)
+    }
+    
     private func storeDivisions(part: XMLIndexer, identifier: String) throws {
         let divisions = try initialDivisions(part: part)
-        divisionsByPartIdentifier[identifier] = divisions
+        divisionsByPart[identifier] = divisions
     }
     
     // Attempt to get divisions for a given `part` from the first measure
     private func initialDivisions(part: XMLIndexer) throws -> Int {
         
-        guard let firstMeasure = part["measure"].all.first else {
-            throw Error.illFormedScore
-        }
-        
-        guard let divisionsString = firstMeasure["attributes"]["divisions"].element?.text else {
-            throw Error.illFormedScore
-        }
-        
-        guard let divisions = Int(divisionsString) else {
+        guard
+            let firstMeasure = part["measure"].all.first,
+            let divisionsString = firstMeasure["attributes"]["divisions"].element?.text,
+            let divisions = Int(divisionsString)
+        else {
             throw Error.illFormedScore
         }
         
         return divisions
     }
     
-//    private func divisions(measure: XMLIndexer) throws -> Int {
-//        
-//        guard let divisionsString = measure["attributes"]["divisions"].element?.text else {
-//            throw Error.illFormedScore
-//        }
-//        
-//        guard let divisions = Int(divisionsString) else {
-//            throw Error.illFormedScore
-//        }
-//        
-//        return divisions
-//    }
-    
     private func identifier(part: XMLIndexer) -> String? {
         return part.element?.attribute(by: "id")?.text
     }
     
     /// Creates an `XMLIndexer` representing the entire score with the given `name`.
-    private func modelXML(name: String) throws -> XMLIndexer {
+    private func scoreXML(name: String) throws -> XMLIndexer {
         
         let bundle = Bundle(for: MusicXMLToAbstractMusicalModelConverter.self)
         
@@ -155,17 +209,11 @@ internal class MusicXMLToAbstractMusicalModelConverter {
     }
 }
 
-
-
 /*
 // TODO: Import AbstractMusicalModel
 
 // Stub types
-struct SpelledPitch {
-    let step: String
-    let alter: Int
-    let octave: Int
-}
+
 
 enum RestOrEvent <T> {
     case rest

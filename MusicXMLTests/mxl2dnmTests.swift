@@ -12,7 +12,12 @@ import XCTest
 class mxl2dnmTests: XCTestCase {
 
     func testMusicXMLParseScorePartwise() {
-
-        let converter = MusicXMLToAbstractMusicalModelConverter()
+        _ = MusicXMLToAbstractMusicalModelConverter()
+    }
+    
+    func DISABLED_testMusicXMLParserPerformance() {
+        self.measure {
+            _ = MusicXMLToAbstractMusicalModelConverter()
+        }
     }
 }
