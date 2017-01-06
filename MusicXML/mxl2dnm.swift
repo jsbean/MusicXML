@@ -6,8 +6,94 @@
 //
 //
 
-import Foundation
 import SWXMLHash
+import AbstractMusicalModel
+
+// TODO: Tick (`implicit`, `forward`, `backup`)
+
+internal class MusicXMLToAbstractMusicalModelConverter {
+    
+    internal enum Error: Swift.Error {
+        case resourceNotFound(String)
+        case illFormedScore
+        case nonIdentifiedPart
+    }
+    
+    internal enum Format {
+        case partwise
+        case timewise
+    }
+    
+    internal init() {
+        
+        do {
+            let xml = try modelXML(name: "Dichterliebe01")
+            let (score, format) = try scoreAndFormat(xml)
+            try traverse(score, format)
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    private func scoreAndFormat(_ score: XMLIndexer) throws -> (XMLIndexer, Format) {
+        
+        if score["score-partwise"].element != nil {
+            return (score["score-partwise"], Format.partwise)
+        } else if score["score-timewise"].element != nil {
+            return (score["score-timewise"], Format.timewise)
+        } else {
+            throw Error.illFormedScore
+        }
+    }
+    
+    internal func traverse(_ score: XMLIndexer, _ format: Format) throws {
+        switch format {
+        case .partwise:
+            try traversePartwise(score)
+        case .timewise:
+            fatalError("Timewise traversal not yet supported!")
+        }
+    }
+    
+    private func traversePartwise(_ score: XMLIndexer) throws {
+        for part in score["part"].all {
+            print("------")
+            try traversePart(part)
+        }
+    }
+    
+    private func traversePart(_ part: XMLIndexer) throws {
+        
+        // TODO: make failable
+        guard let performerIdentifier = identifier(part: part) else {
+            throw Error.nonIdentifiedPart
+        }
+        
+        print("Part: \(performerIdentifier)")
+    }
+    
+    private func identifier(part: XMLIndexer) -> String? {
+        return part.element?.attribute(by: "id")?.text
+    }
+    
+    /// Creates an `XMLIndexer` representing the entire score with the given `name`.
+    private func modelXML(name: String) throws -> XMLIndexer {
+        
+        let bundle = Bundle(for: MusicXMLToAbstractMusicalModelConverter.self)
+        
+        guard let url = bundle.url(forResource: name, withExtension: "xml") else {
+            throw Error.resourceNotFound(name)
+        }
+        
+        let data = try Data(contentsOf: url)
+        return SWXMLHash.parse(data)
+    }
+}
+
+
+
+/*
 // TODO: Import AbstractMusicalModel
 
 // Stub types
@@ -161,3 +247,4 @@ public class MusicXML {
         }
     }
 }
+*/
