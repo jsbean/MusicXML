@@ -158,6 +158,10 @@ internal class MusicXMLToAbstractMusicalModelConverter {
             try updateCursor(forward: measureItem)
         case "note":
             try traverseNote(measureItem, identifier: identifier)
+        case "dynamics":
+            print("dynamic not yet supported")
+        case "notations":
+            print("notations -> slurs not yet supported")
         default:
             break
         }
