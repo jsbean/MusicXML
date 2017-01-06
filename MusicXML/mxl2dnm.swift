@@ -45,7 +45,7 @@ internal class MusicXMLToAbstractMusicalModelConverter {
     
     /// Current duration in divisions
     /// - TODO: Make conversion to beats, given divisionsByPartIdentifier value
-    private var tick: Int = 0
+    private var cursor: Int = 0
     
     internal init() {
         
@@ -118,7 +118,7 @@ internal class MusicXMLToAbstractMusicalModelConverter {
         }
     }
     
-    private func adjustTick(_ forward: XMLIndexer) throws {
+    private func adjustcursor(_ forward: XMLIndexer) throws {
 
     }
     
@@ -131,9 +131,11 @@ internal class MusicXMLToAbstractMusicalModelConverter {
         
         let dur = try duration(note)
         print("duration: \(dur)")
-        print("tick: \(tick)")
+        print("cursor: \(cursor)")
         print("divisions: \(divisionsByPart[identifier])")
-        tick += dur
+        
+        // manage with cursor
+        cursor += dur
     
         // check if rest
         // otherwise, pitch
@@ -284,7 +286,7 @@ public class MusicXML {
             // - move forward implicitly after `note` with `duration`
             // - move forward explicitly after `forward` element
             // - move backward explicitly after `backup` element
-            var tick: Int = 0
+            var cursor: Int = 0
             
             for measure in part["measure"].all {
                 
@@ -305,7 +307,7 @@ public class MusicXML {
                     }
                     
                     // Manage changing `divisions` as necessary
-                    tick += n.duration.beats
+                    cursor += n.duration.beats
                     print(n)
                 }
             }
