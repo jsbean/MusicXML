@@ -6,6 +6,7 @@
 //
 //
 
+import QuartzCore
 import SWXMLHash
 import AbstractMusicalModel
 
@@ -24,15 +25,24 @@ internal class MusicXMLToAbstractMusicalModelConverter {
         case timewise
     }
     
+    private var divisionsByPartIdentifier: [String: Int] = [:]
+    
     internal init() {
+        
+        let start = CACurrentMediaTime()
         
         do {
             let xml = try modelXML(name: "Dichterliebe01")
             let (score, format) = try scoreAndFormat(xml)
             try traverse(score, format)
         } catch {
-            print(error)
+            //print(error)
         }
+        
+        let end = CACurrentMediaTime()
+        let total = end - start
+        
+        print("time taken: \(total)")
         
     }
     
@@ -57,21 +67,75 @@ internal class MusicXMLToAbstractMusicalModelConverter {
     }
     
     private func traversePartwise(_ score: XMLIndexer) throws {
-        for part in score["part"].all {
-            print("------")
-            try traversePart(part)
-        }
+        try score["part"].all.forEach(traversePart)
+        print(divisionsByPartIdentifier)
     }
     
     private func traversePart(_ part: XMLIndexer) throws {
         
-        // TODO: make failable
         guard let performerIdentifier = identifier(part: part) else {
             throw Error.nonIdentifiedPart
         }
         
-        print("Part: \(performerIdentifier)")
+        try storeDivisions(part: part, identifier: performerIdentifier)
+        
+        try part["measure"].all.forEach {
+            try traverseMeasure($0, identifier: performerIdentifier)
+        }
     }
+
+    private func traverseMeasure(_ measure: XMLIndexer, identifier: String) throws {
+        
+        try measure["note"].all.forEach {
+            try traverseNote($0, identifier: identifier)
+        }
+    }
+    
+    private func traverseNote(_ note: XMLIndexer, identifier: String) throws {
+        
+        // check if rest
+        // otherwise, pitch
+        // duration
+        // voice
+        // staff ?
+        // tie (start / stop)
+    }
+    
+    private func storeDivisions(part: XMLIndexer, identifier: String) throws {
+        let divisions = try initialDivisions(part: part)
+        divisionsByPartIdentifier[identifier] = divisions
+    }
+    
+    // Attempt to get divisions for a given `part` from the first measure
+    private func initialDivisions(part: XMLIndexer) throws -> Int {
+        
+        guard let firstMeasure = part["measure"].all.first else {
+            throw Error.illFormedScore
+        }
+        
+        guard let divisionsString = firstMeasure["attributes"]["divisions"].element?.text else {
+            throw Error.illFormedScore
+        }
+        
+        guard let divisions = Int(divisionsString) else {
+            throw Error.illFormedScore
+        }
+        
+        return divisions
+    }
+    
+//    private func divisions(measure: XMLIndexer) throws -> Int {
+//        
+//        guard let divisionsString = measure["attributes"]["divisions"].element?.text else {
+//            throw Error.illFormedScore
+//        }
+//        
+//        guard let divisions = Int(divisionsString) else {
+//            throw Error.illFormedScore
+//        }
+//        
+//        return divisions
+//    }
     
     private func identifier(part: XMLIndexer) -> String? {
         return part.element?.attribute(by: "id")?.text
