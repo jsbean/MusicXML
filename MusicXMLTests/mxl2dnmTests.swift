@@ -7,12 +7,18 @@
 //
 
 import XCTest
-import MusicXML
+@testable import MusicXML
 
 class mxl2dnmTests: XCTestCase {
 
     func testMusicXMLParseScorePartwise() {
-
-        let musicXML = MusicXML()
+        _ = MusicXMLToAbstractMusicalModelConverter(name: "Dichterliebe01")
     }
+    
+    func DISABLED_testMusicXMLParserPerformance() {
+        self.measure {
+            _ = MusicXMLToAbstractMusicalModelConverter(name: "Dichterliebe01")
+        }
+    }
+    
 }
