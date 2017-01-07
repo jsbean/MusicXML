@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0712A1FA1E2160EB00C9283D /* MusicXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8FF38648AC3F8BD841107CF /* MusicXML.framework */; };
 		073F6BB21E1C01270098AA8E /* mxl2dnm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F6BB11E1C01270098AA8E /* mxl2dnm.swift */; };
 		073F6BB31E1C01270098AA8E /* mxl2dnm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F6BB11E1C01270098AA8E /* mxl2dnm.swift */; };
 		073F6BCA1E1C07230098AA8E /* Dichterliebe01.xml in Resources */ = {isa = PBXBuildFile; fileRef = 073F6BAF1E1C00510098AA8E /* Dichterliebe01.xml */; };
@@ -15,6 +16,7 @@
 		073F6BCE1E1C072C0098AA8E /* Chant.xml in Resources */ = {isa = PBXBuildFile; fileRef = 073F6BB01E1C00510098AA8E /* Chant.xml */; };
 		073F6BD01E1C1A570098AA8E /* mxl2dnmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F6BCF1E1C1A570098AA8E /* mxl2dnmTests.swift */; };
 		073F6BD11E1C1A570098AA8E /* mxl2dnmTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F6BCF1E1C1A570098AA8E /* mxl2dnmTests.swift */; };
+		0799D9361E21653800516ADF /* MusicXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8976F67094943E77111F7F14 /* MusicXML.framework */; };
 		08F1483F64C26F86C9710AA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D552A0E95F3BFD891DD82166 /* Foundation.framework */; };
 		0C84A4B7DAC6504678FFD639 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210770FC9E5EA00668B119E4 /* Cocoa.framework */; };
 		5176862BB2A388ED07B3F2AA /* MusicXML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AB923FCC5E3160373DE9415A /* MusicXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -45,7 +47,7 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		8B9454E09A25A35200F479DC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
@@ -105,6 +107,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C84A4B7DAC6504678FFD639 /* Cocoa.framework in Frameworks */,
+				0799D9361E21653800516ADF /* MusicXML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC70F58EFBD214D2CBAEDDA /* Foundation.framework in Frameworks */,
+				0712A1FA1E2160EB00C9283D /* MusicXML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,10 +240,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 19E0C7AF760AC101697FE43D /* Build configuration list for PBXNativeTarget "MusicXML macOS Tests" */;
 			buildPhases = (
-				8F6F23640830DC47BC917077 /* ShellScript */,
 				E027530423C516C9F39AA877 /* Sources */,
 				91B3C5A4CD8530662958301F /* Frameworks */,
 				8B9454E09A25A35200F479DC /* CopyFiles */,
+				8F6F23640830DC47BC917077 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -273,10 +277,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05ADDE8F5FD3EBB368EB7FBB /* Build configuration list for PBXNativeTarget "MusicXML iOS Tests" */;
 			buildPhases = (
-				015F6792717F3930CD52BCDC /* ShellScript */,
 				3C243BB24D92010DAFC35656 /* Sources */,
 				E690C7724000042DD573F209 /* Frameworks */,
 				C2708C916EAD755BF8A215F0 /* CopyFiles */,
+				015F6792717F3930CD52BCDC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -326,6 +330,7 @@
 					};
 					977DF5ED5B29222138A42B44 = {
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -486,7 +491,7 @@
 				INFOPLIST_FILE = MusicXML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(SRCROOT)/Carthage/Build/iOS";
+				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dn-m.MusicXML";
 				PRODUCT_NAME = MusicXML;
@@ -541,13 +546,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXMLTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac $(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(SRCROOT)/Carthage/Build/Mac";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -575,7 +582,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dn-m.MusicXML";
@@ -607,7 +614,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "";
+				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dn-m.MusicXML";
@@ -627,12 +634,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXMLTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS $(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(SRCROOT)/Carthage/Build/iOS";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -659,7 +670,7 @@
 				INFOPLIST_FILE = MusicXML/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(SRCROOT)/Carthage/Build/iOS";
+				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dn-m.MusicXML";
 				PRODUCT_NAME = MusicXML;
@@ -679,12 +690,16 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXMLTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS $(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(SRCROOT)/Carthage/Build/iOS";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -739,13 +754,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = MusicXMLTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/Mac $(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks $(SRCROOT)/Carthage/Build/Mac";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
