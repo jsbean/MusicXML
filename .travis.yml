@@ -1,6 +1,8 @@
 language: objective-c
 osx_image: xcode8.2
 env:
+  global:
+    secure: cEyhk8JBa/vS4QPc8O7OCCr3+gTWTemRt3zMIkc0PXukH3aQW7IXaD2Kqx1VXuD0DVJ+k8mQhbYkA6k+ooenX56Hy/GtxjErNWn/zkZSQAT6u8mcD3jEpGZ98P+j/HsSM9FtTpeVqonucGEmWTZ+9J8ttqQNlETa4taPruE85fSGhCXKLbxyuf+e7lPn/j/Tkmb0PglLl3dJTBov3IWNTuEp3+W1ITxiWf8Fr9bSqcKWzhuM6w1fj4enwnwMIT64fJKofp3FOjtNpT47t/80Tn612S5OyLjCCoZ75cg/xWDE4uPaP3/zxR4zCPsIUwvMUcgaV33qYCtMvBNLoXymbbRoxWgTlU1/fSwc7kzFUM9AT7YpnKGOEu93wW91ajCMGRp/ZpCdJSNyvfPje+qIIeZEZvZcESoAIKfq2hyTh5xcSm4UyJzSmcPqGM1uY3ruMso+tjK/bFf1ryYz4Qs9YJm1GkUj+Zfyt95ywJ3w4TyGleSge/FUopMi8GpMnorCX/fH+fu6bonUkTJiy96p0EjSF4hF/sE7+pwajGOoByUxiZTxseeByT8c0syHJvcBUi8FkdfQvGXzJfMZixUwOJls3aS1AxFfn1UFR/Sim5Hua8wX0vYAFWlKhSTmB/5r3D4OBDh49Mo/XuAnhB1RaQA/M8uIOEcnKYDg3Lz0Y3Q=
   matrix:
     - DESTINATION="platform=iOS Simulator,OS=9.3,name=iPad 2"
       SCHEME="MusicXML iOS"
@@ -9,7 +11,8 @@ env:
     - DESTINATION="platform=OS X"
       SCHEME="MusicXML macOS"
 
-before_script: if [ -f ./Cartfile ]; then carthage update; fi;
+before_script:
+- if [ -f ./Cartfile ]; then carthage update; fi;
 
 script: travis_retry xcodebuild test
   -project MusicXML.xcodeproj
@@ -18,4 +21,14 @@ script: travis_retry xcodebuild test
   TOOLCHAINS=swift
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+- git config --global user.name "jsbean"
+- git config --global user.email "jbean46@gmail.com"
+- gem install jazzy
+- git clone https://${GH_TOKEN}@github.com/dn-m/dn-m.github.io.git
+- jazzy
+- cp -r docs dn-m.github.io/MusicXML
+- cd dn-m.github.io
+- git add .
+- git commit -m "Update docs"
+- git push origin master

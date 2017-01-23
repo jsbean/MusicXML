@@ -185,7 +185,6 @@ internal class MusicXMLToAbstractMusicalModelConverter {
         )
         
         moveCursor(by: dur)
-        
         print(note)
         
         // TODO:
